@@ -1,7 +1,2 @@
 IMPORT standaard
-
-CELL 'tweetlistcell' {'event': 'createTweetlistGadget', 'data': [json_serialize({"cell": "tweetlistcell", "id": "myTweetlist", "title": "tweets"})]}
-
-RULE: new_tweet_rule
-EVENT: new_tweet
-ACTION: add_tweetlist_tweet('myTweetlist', new_tweet.json_dict)
+IMPORT Team13
