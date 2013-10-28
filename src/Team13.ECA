@@ -1,5 +1,6 @@
 IMPORT standaard
 
+<<<<<<< HEAD
 CELL 'tweetlistcell' {'event': 'createTweetListGadget', 'data': [json_serialize({"cell": "tweetlistcell", "id": "myTweetlist", "title", "tweets"})]}
 
 DECLARE bata_gerelateerd = csv_read_kv_dict('modules/bata_gerelateerd.csv', 0, 1)
@@ -8,3 +9,10 @@ RULE: new_tweet_rule
 EVENT: new_tweet
 CONDITION: new_tweet.id IN bata_gerelateerd
 ACTION: add_tweetlist_tweet('myTweetlist', new_tweet.json_dict)
+=======
+CELL 'tweetlistcell' {'event': 'createTweetlistGadget', 'data': [json_serialize({"cell": "tweetlistcell", "id": "myTweetlist", "title": "tweets"})]}
+
+RULE: new_tweet_rule
+EVENT: new_tweet
+ACTION: add_tweetlist_tweet('myTweetlist', new_tweet.json_dict)
+>>>>>>> 7e07e80872d62d2b5d56884760f0814cf14922b7
