@@ -6,5 +6,11 @@ DECLARE tussenstand = csv_read_kv_dict('modules/tussenstand.csv',1,0)
 
 RULE: new_tweet_rule
 EVENT: new_tweet
-CONDITION: tussenstand[new_tweet.id] != None
-ACTION: add_tweetlist_tweet('myStandTweetlist', new_tweet.json_dict)
+CONDITION: tussenstand[new_tweet.id] == "Y"
+ACTION:	add_tweetlist_tweet('myStandTweetlist', new_tweet.json_dict)
+
+
+RULE: the_finalization_rule
+EVENT: finalize
+CONDITION: True
+ACTION:	tussenstand = None
