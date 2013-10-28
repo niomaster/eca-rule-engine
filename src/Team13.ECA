@@ -1,0 +1,3 @@
+IMPORT standaard
+
+CELL 'tweetlistcell' {'event': 'createTweetListGadget', 'data': [json_serialize({"cell": "tweetlistcell", "id": "myTweetList", "title", "tweets"})]}
