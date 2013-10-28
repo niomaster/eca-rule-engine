@@ -1,0 +1,10 @@
+IMPORT standaard
+
+CELL 'tweetlistcell_stand' {'event': 'createTweetlistGadget', 'data': [json_serialize({"cell": "tweetlistcell_stand", "id": "myStandTweetlist", "title": "tweets"})]}
+
+DECLARE tussenstand = csv_read_kv_dict('modules/tussenstand.csv',1,0)
+
+RULE: new_tweet_rule
+EVENT: new_tweet
+CONDITION: tussenstand[new_tweet.id] != None
+ACTION: add_tweetlist_tweet('myStandTweetlist', new_tweet.json_dict)
