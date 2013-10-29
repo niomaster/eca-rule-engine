@@ -23,7 +23,7 @@ EVENT: new_bata_tweet
 CONDITION: True
 ACTION:	add_tweetlist_tweet('bataTweetlist', new_bata_tweet.tweet.json_dict)
 
-RULE: new_bata_tweet_rule
+RULE: new_bata_tweet_rule2
 EVENT: new_bata_tweet
-CONDITION: tussenstand[new_tweet.id] == "Y"
-ACTION:	add_tweetlist_tweet('standTweetlist', new_bata_tweet.json_dict)
+CONDITION: tussenstand[new_bata_tweet.tweet.id] == "Y"
+ACTION:	add_tweetlist_tweet('standTweetlist', new_bata_tweet.tweet.json_dict)
