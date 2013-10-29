@@ -1,0 +1,22 @@
+IMPORT 1-400+.csv
+
+CELL 'wordcloudcell' {'event': 'createWordCloudGadget', 'data': [json_serialize({"cell": "wordcloudcell", "id": "myWordCloud", "title": "Tweetcloud13"})]}
+
+DECLARE ntweets = 0
+DECLARE sentiment = csv_read_kv_dict('modules/emotie.csv',1,0)
+DECLARE word_dict = {}
+
+RULE: new_tweet_rule
+EVENT: new_tweet
+CONDITION: sentiment[new_tweet.id] != "_"
+ACTION: FOR w in getwords(new_tweet.text): NEW_EVENT new_word {word: w}
+
+RULE: new_word_rule
+EVENT: new_word
+ACTION: IF new_word.word IN word_dict THEN word_dict[new_word.word] += 1 ELSE word_dict[new_word.word] = 1
+
+RULE: wordcloud_updater
+EVENT: new_tweet
+CONDITION: (ntweets % 10) == 0
+ACTION:	update_wordcloud('myWordCloud',word_dict)
+
