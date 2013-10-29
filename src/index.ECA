@@ -1,6 +1,6 @@
 IMPORT standaard
 
-CELL 'bata_tweetlist' {'event': 'createTweetlistGadget', 'data': [json_serialize({"cell": "bata_tweetlist", "id": "bataTweetlist", "title": "tweets"})]}
+CELL 'bata_tweetlist' {'event': 'createTweetlistGadget', 'data': [json_serialize({"cell": "bata_tweetlist", "id": "bataTweetlist"})]}
 CELL 'stand_tweetlist' {'event': 'createTweetlistGadget', 'data': [json_serialize({"cell": "stand_tweetlist", "id": "standTweetlist", "title": "tweets"})]}
 
 DECLARE tussenstand = csv_read_kv_dict('modules/tussenstand.csv',1,0)
