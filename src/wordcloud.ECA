@@ -1,5 +1,3 @@
-IMPORT 1-400+.csv
-
 CELL 'wordcloudcell' {'event': 'createWordCloudGadget', 'data': [json_serialize({"cell": "wordcloudcell", "id": "myWordCloud", "title": "Tweetcloud13"})]}
 
 DECLARE ntweets = 0
