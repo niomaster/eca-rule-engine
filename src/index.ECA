@@ -74,4 +74,4 @@ ACTION:	IF new_emotie_loos_word.word IN word_dict THEN word_dict[new_emotie_loos
 RULE: wordcloud_updater
 EVENT: new_bata_tweet
 CONDITION: (ntweets % 10) == 0
-ACTION:	update_wordcloud('myWordCloud', map_max(word_dict, 0))
+ACTION:	update_wordcloud('myWordCloud', filter_notgreater(word_dict, 0))

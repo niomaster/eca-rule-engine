@@ -4,8 +4,8 @@ import fm
 def init(arg):
 	pass
 
-def map_max(dict, value):
-	return { k: max(value, v) for k, v in dict.items() }
+def filter_notgreater(dict, value):
+	return { k: v for k, v in dict.items() if v > value }
 
 
-ECA_parser.functions.update( { "map_max": (2, fm.fcall2(map_max)) } )
+ECA_parser.functions.update( { "filter_notgreater": (2, fm.fcall2(filter_notgreater)) } )
