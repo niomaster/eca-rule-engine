@@ -2,10 +2,31 @@
     margin-bottom: 0;
 }
 
-.right-shadow {
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+#margin-fix {
+    margin: 0 15px;
 }
 
+.row .col-md-6 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#bata_tweetlist {
+    box-shadow: inset 15px 0 20px -20px;
+}
+
+li.stream-item {
+    background: none;
+}
+
+.tweet:hover {
+    background: none;
+}
+
+
+/*
+--- CSS voor de wordclouds
+*/
 div.jqcloud {
   font-size: 10px;
   line-height: normal;
