@@ -3,10 +3,12 @@ IMPORT simple_wordcloud
 IMPORT eca_math
 IMPORT eca_string
 IMPORT utility
+IMPORT thermometer
 
 CELL 'bata_tweetlist' {'event': 'createTweetlistGadget', 'data': [json_serialize({"cell": "bata_tweetlist", "id": "bataTweetlist"})]}
 CELL 'stand_tweetlist' {'event': 'createTweetlistGadget', 'data': [json_serialize({"cell": "stand_tweetlist", "id": "standTweetlist", "title": "Laatste updates tussenstand"})]}
 CELL 'wordcloudcell' {'event': 'createWordCloudGadget', 'data': [json_serialize({"cell": "wordcloudcell", "id": "myWordCloud", "title": "Emotie cloud"})]}
+CELL 'thermometer' {'event': 'createThermometerGadget', 'data': [json_serialize({"cell": "thermometercell", "id": "myThermometer", "title": "Emotie"})]}
 
 DECLARE tussenstand = csv_read_kv_dict('modules/tussenstand.csv',1,0)
 DECLARE bata_gerelateerd = csv_read_kv_dict('modules/bata_gerelateerd.csv',1,0)
@@ -27,6 +29,7 @@ RULE: new_tweet_rule
 EVENT: new_tweet
 CONDITION: bata_gerelateerd[new_tweet.id] == "Y"
 ACTION:	NEWEVENT new_bata_tweet {tweet : new_tweet}
+    updateThermometer('myThermometer', ntweets)
 
 RULE: new_bata_tweet_rule
 EVENT: new_bata_tweet

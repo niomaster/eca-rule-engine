@@ -38,6 +38,16 @@ define(["jquery"],
                 this.myView.createAlerter("#" + data.cell, data.id,
                     data.title);
             },
+
+            createThermometerGadgetEventReceived: function(event, data) {
+                console.log('[13] Create! ' + JSON.stringify(data));
+                this.myView.createThermometerGadget("#" + data.cell, data.id, data.title);
+            },
+
+            updateThermometerEventReceived: function(event, data) {
+                console.log('[13] Update! ' + JSON.stringify(data));
+                this.myView.thermometerViews[data.id].updateThermometer(data.split);
+            },
             
             createMapsGadgetEventReceived: function(event, data) {
                 console.log("message event: " + data);

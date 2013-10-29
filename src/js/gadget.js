@@ -42,6 +42,7 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
 		theGadget.append(theTitle);
 		theGadget.append(theContents);
 		this.append(theGadget);
+        console.log(this);
 		return this;
 	};
 	
@@ -234,6 +235,35 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
         this.addGadget(options, contents);
         addToModel(this);
         return this;
+    };
+
+    /** Create a thermometer gadget that shows emotion, with green on the left
+      * and red on the right.
+      *
+      * @todo Add a bootstrap progress bar instead of the current div
+      * 
+      * @function addThermometerGadget
+      * @param {Object} options Settings object with "id" and "title" keys
+      * @param {Function} addToModel callback to establish binding
+      * @memberof module:gadget
+      */
+    $.fn.addThermometerGadget = function(options, addToModel) {
+        this.addGadget(options, [$('<div>').text('HOI TEAM 13 XD LOL').addClass('well')]);
+        addToModel(this);
+        return this;
+    };
+
+    /** Update the current thermometer gadget
+      *
+      * @todo Modifiy the function to update the bootstrap progress bar in .gadget-contents
+      * instead of the entire gadget.
+      * 
+      * @function updateThermometer
+      * @param {Float} split Position of the split between red and green, between 0.0 and 1.0
+      * @memberof module:gadget
+      */
+    $.fn.updateThermometer = function(split) {
+        this.text('split = ' + split);
     };
     
     $.fn.addTweet = function(tweet) {

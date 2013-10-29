@@ -632,8 +632,6 @@ def parse(string):
 
 	parse_part(string)
 
-	print(list(map(str, ECA_rules)))
-
 	save_vars()
 	
 # Saves the initial state of the variables
