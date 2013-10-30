@@ -22,11 +22,27 @@
     overflow: hidden;
     -webkit-transition: position 1s;
 
-    ol {
-        width: 10000px
-    }
+    .gadget-contents {
+        min-height: 250px;
 
-    li {
-        float: left;
+        ol {
+            vertical-align: middle;
+            width: 10000px
+        }
+
+        li {
+            float: left;
+            -webkit-transition: all 0.2s ease-out;
+        }
+
+        img {
+            -webkit-transition: all 2s ease;
+            height: 100px;
+        }
+
+        img:hover {
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            height: 200px;
+        }
     }
 }

@@ -295,6 +295,8 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
       * @memberof module:gadget
       */
     $.fn.addImage = function(src) {
+        if(src == '') return;
+
         console.log("[13] addImage called!");
 
         // TODO: Check if selection has correct type
