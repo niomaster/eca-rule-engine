@@ -6,20 +6,17 @@
         <!-- Style sheets voor ECA engine -->
         <link rel="stylesheet" type="text/css" href="https://abs.twimg.com/a/1376773497/t1/css/t1_core.bundle.css">
         <link rel="stylesheet" type="text/css" href="css/twitter_timeline.css">
-        <link rel="stylesheet" type="text/css" href="css/960.css">
-        <link rel="stylesheet" type="text/css" href="css/jasmine.css">
-        <link rel="stylesheet" type="text/css" href="css/dashboard.css">
+        <link rel="stylesheet" type="text/css" href="css/jqcloud.css">
 
         <!-- Scripts voor ECA engine -->
         <script type="text/javascript" src="lib/js/require.js"></script>
         <script type="text/javascript" src="js/requirejs-config.js"></script>
 
-        <!-- Stylesheets -->
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
-        <!-- Scripts -->
-        <script src="//code.jquery.com/jquery.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <!-- Less stylesheets -->
+        <link rel="stylesheet/less" type="text/css" href="less/dashboard.less">
+
+        <!-- Eigen scripts -->
+        <script type="text/javascript" src="js/less-1.5.0.min.js"></script>
 
         <!-- Start de boel ofzo -->
         <script type="text/javascript">
@@ -31,20 +28,22 @@
         </script>
     </head>
     <body>
-    <nav id="menu" class="navbar navbar-default" role="navigation">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">PRISM</a>
+    <!-- header -->
+    <nav id="menu" class="navbar" role="navigation">
+        <div class="container">
+            <h3>bataboard</h3>
         </div>
     </nav>
-        <div id="margin-fix">
-            <div class="row">
-                <div class="col-md-6">
-                    <div id="stand_tweetlist"></div>
-                    <div id="thermometercell"></div>
-                    <div id="imagecell"></div>
-                </div>
-                <div id="bata_tweetlist" class="col-md-6"></div>
-            </div>
+    <!-- columns -->
+    <div class="container">
+        <div class="col-6 col-with-padding">
+            <div id="stand_tweetlist" class="panel"></div>
+            <div id="thermometercell" class="panel"></div>
+            <div id="imagecell" class="panel"></div>
         </div>
+        <div class="col-6">
+            <div id="bata_tweetlist" class="panel"></div>
+        </div>
+    </div>
     </body>
 </html>

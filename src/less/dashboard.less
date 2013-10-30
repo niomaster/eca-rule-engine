@@ -1,0 +1,48 @@
+@import "framework.less";
+
+.panel .gadget-title {
+    color: @header-color;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    padding: 0.4em;
+
+    background: @background-color-dark;
+}
+
+.panel .gadget-content {
+    background: @background-color-lighter;
+}
+
+#bataTweetlist .gadget-title {
+    display: none;
+}
+
+#myImage {
+    overflow: hidden;
+    -webkit-transition: position 1s;
+
+    .gadget-contents {
+        min-height: 250px;
+
+        ol {
+            vertical-align: middle;
+            width: 10000px
+        }
+
+        li {
+            float: left;
+            -webkit-transition: all 0.2s ease-out;
+        }
+
+        img {
+            -webkit-transition: all 2s ease;
+            height: 100px;
+        }
+
+        img:hover {
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            height: 200px;
+        }
+    }
+}

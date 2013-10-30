@@ -247,7 +247,10 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
       * @memberof module:gadget
       */
     $.fn.addThermometerGadget = function(options, addToModel) {
-        this.addGadget(options, [$('<div>').text('HOI TEAM 13 XD LOL').addClass('well')]);
+        var content = [$('<div>').addClass('progress')
+            .append($('<div>').addClass('happy-bar').width('50%'))];
+
+        this.addGadget(options, content);
         addToModel(this);
         return this;
     };
@@ -262,7 +265,8 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
       * @memberof module:gadget
       */
     $.fn.updateThermometer = function(split) {
-        this.text('split = ' + split);
+        this.find('.happy-bar').width(split * 100 + '%');
+
     };
     
     /** Create a image gadget that shows tweeted images.
@@ -291,14 +295,13 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
       * @memberof module:gadget
       */
     $.fn.addImage = function(src) {
+        if(src == '') return;
+
         console.log("[13] addImage called!");
 
         // TODO: Check if selection has correct type
-        var newItem = $('<li class="js-stream-item stream-item stream-item ' +
-                        'expanding-stream-item"></li>');
-        var imageDiv = $('<div class="tweet original-tweet js-stream-tweet ' +
-                         'js-actionable-tweet js-profile-popup-actionable ' +
-                         'js-original-tweet"></div>');
+        var newItem = $('<li></li>');
+        var imageDiv = $('<div></div>');
         var contentDiv = $('<div class="content"></div>');
         
         // Build a image:

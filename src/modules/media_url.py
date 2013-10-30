@@ -9,11 +9,9 @@ def getmediaurl(tweet):
 	url = ''
 	try:
 		j = tweet.data['json']
-		print(json.dumps(j))
-		#print(tweet.data['json'].__dict__.keys())
-		#url = tweet.data['media_url']
+		url = json.loads(j)['entities']['media'][0]['media_url']
 	except KeyError:
-		return 'oeps'
+		return ''
 	
 	return url
 
