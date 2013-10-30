@@ -4,12 +4,14 @@ IMPORT eca_math
 IMPORT eca_string
 IMPORT utility
 IMPORT thermometer
+IMPORT image
 
 CELL 'bata_tweetlist' {'event': 'createTweetlistGadget', 'data': [json_serialize({"cell": "bata_tweetlist", "id": "bataTweetlist"})]}
 CELL 'stand_tweetlist' {'event': 'createTweetlistGadget', 'data': [json_serialize({"cell": "stand_tweetlist", "id": "standTweetlist", "title": "Laatste updates tussenstand"})]}
 CELL 'wordcloudcell' {'event': 'createWordCloudGadget', 'data': [json_serialize({"cell": "wordcloudcell", "id": "myWordCloud", "title": "Emotie cloud"})]}
-CELL 'thermometery' {'event': 'createThermometerGadget', 'data': [json_serialize({"cell": "thermometercell", "id": "myThermometer", "title": "Emotie"})]}
+CELL 'thermometer' {'event': 'createThermometerGadget', 'data': [json_serialize({"cell": "thermometercell", "id": "myThermometer", "title": "Emotie"})]}
 #CELL 'tweetcountcell' {'event': 'createThermometerGadget', 'data': [json_serialize({"cell": "tweetcountcell", "id": "myTweetcount", "title": "Count"})]}
+CELL 'image' {'event': 'createImageGadget', 'data': [json_serialize({"cell": "imagecell", "id": "myImage", "title": "Emotie"})]}
 
 DECLARE tussenstand = csv_read_kv_dict('modules/tussenstand.csv',1,0)
 DECLARE bata_gerelateerd = csv_read_kv_dict('modules/bata_gerelateerd.csv',1,0)
@@ -59,6 +61,7 @@ CONDITION: True
 ACTION:	FORALL w IN getwords(new_emotie_tweet.tweet.text): NEWEVENT new_emotie_word {word: w}
 	ntweets_emotie += 1
 	updateThermometer('myThermometer', (ntweets_emotie_positief / ntweets_emotie) )
+	updateImage('myImage', "http://placekitten.com/200/300")
 
 RULE: new_emotie_word_rule
 EVENT: new_emotie_word
