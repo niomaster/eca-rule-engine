@@ -37,4 +37,3 @@ ACTION: word=lower(new_word.word)
 	counts[i] = counts[i] + 1
 	add_point('mychart',i,counts[i])
 	print('word '+str(i)+' = '+word+'/'+str(counts[i]))
-
