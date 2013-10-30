@@ -54,7 +54,7 @@ RULE: new_bata_tweet_rule_emotie
 EVENT: new_bata_tweet
 CONDITION: sentiment[new_bata_tweet.tweet.id] != "_"
 ACTION:	NEWEVENT new_emotie_tweet {tweet : new_bata_tweet.tweet}
-	updateImage('myImage', "http://placekitten.com/{}/300".format(50+10*ntweets))
+	updateImage('myImage', "http://placekitten.com/200/300")
 
 RULE: new_emotie_tweet_rule
 EVENT: new_emotie_tweet
