@@ -7,13 +7,16 @@
         <link rel="stylesheet" type="text/css" href="https://abs.twimg.com/a/1376773497/t1/css/t1_core.bundle.css">
         <link rel="stylesheet" type="text/css" href="css/twitter_timeline.css">
         <link rel="stylesheet" type="text/css" href="css/jqcloud.css">
-        <link rel="stylesheet" type="text/css" href="css/theme.css">
-        <link rel="stylesheet" type="text/css" href="css/dashboard.css">
-
 
         <!-- Scripts voor ECA engine -->
         <script type="text/javascript" src="lib/js/require.js"></script>
         <script type="text/javascript" src="js/requirejs-config.js"></script>
+
+        <!-- Less stylesheets -->
+        <link rel="stylesheet/less" type="text/css" href="less/dashboard.less">
+
+        <!-- Eigen scripts -->
+        <script type="text/javascript" src="js/less-1.5.0.min.js"></script>
 
         <!-- Start de boel ofzo -->
         <script type="text/javascript">
@@ -27,17 +30,19 @@
     <body>
     <!-- header -->
     <nav id="menu" class="navbar" role="navigation">
-            <a class="navbar-title" href="#">PRISM</a>
+        <div class="container">
+            <h3>bataboard</h3>
+        </div>
     </nav>
 
     <!-- columns -->
     <div class="container">
-        <div class="col-6">
-            <div id="stand_tweetlist"></div>
-            <div id="thermometercell"></div>
+        <div class="col-6 col-with-padding">
+            <div id="stand_tweetlist" class="panel"></div>
+            <div id="thermometercell" class="panel"></div>
         </div>
         <div class="col-6">
-            <div id="bata_tweetlist"></div>
+            <div id="bata_tweetlist" class="panel"></div>
         </div>
     </div>
     </body>
