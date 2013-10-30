@@ -1,3 +1,4 @@
+/* Aanpassingen aan bootstrap componenten, kijken of dit netter kan d.m.v. een eigen theme */
 #menu {
     margin-bottom: 0;
 }
@@ -12,9 +13,21 @@
 }
 
 #bata_tweetlist {
-    box-shadow: inset 15px 0 20px -20px;
+    position: absolute;
+    top: 52px;
+    bottom: 0;
+    right: 0;
+
+    box-shadow: inset 11px 0 20px -20px;
+    background: #eee;
 }
 
+div.panel {
+  border-radius: 0;
+  min-height: 200px;
+}
+
+/* Fixes voor de inner shadow van de tweetlist */
 li.stream-item {
     background: none;
 }
