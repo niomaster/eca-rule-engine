@@ -5,6 +5,7 @@ IMPORT eca_string
 IMPORT utility
 IMPORT thermometer
 IMPORT image
+IMPORT media_url
 
 CELL 'bata_tweetlist' {'event': 'createTweetlistGadget', 'data': [json_serialize({"cell": "bata_tweetlist", "id": "bataTweetlist"})]}
 CELL 'stand_tweetlist' {'event': 'createTweetlistGadget', 'data': [json_serialize({"cell": "stand_tweetlist", "id": "standTweetlist", "title": "Laatste updates tussenstand"})]}
@@ -44,6 +45,11 @@ ACTION:	add_tweetlist_tweet('bataTweetlist', new_bata_tweet.tweet.json_dict)
 	ntweets += 1
 	#updateThermometer('myTweetcount', ntweets)
 
+RULE: new_bata_tweet_rule
+EVENT: new_bata_tweet
+CONDITION: getmediaurl(new_bata_tweet.tweet) != ''
+ACTION:	updateImage('myImage', getmediaurl(new_bata_tweet.tweet))
+
 RULE: new_bata_tweet_rule_stand
 EVENT: new_bata_tweet
 CONDITION: tussenstand[new_bata_tweet.tweet.id] == "Y"
@@ -54,7 +60,6 @@ RULE: new_bata_tweet_rule_emotie
 EVENT: new_bata_tweet
 CONDITION: sentiment[new_bata_tweet.tweet.id] != "_"
 ACTION:	NEWEVENT new_emotie_tweet {tweet : new_bata_tweet.tweet}
-	updateImage('myImage', "http://placekitten.com/200/300")
 
 RULE: new_emotie_tweet_rule
 EVENT: new_emotie_tweet
