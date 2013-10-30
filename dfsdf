@@ -1,0 +1,162 @@
+[33mcommit 4aec7d05355bbde19033d3fc4d6c76e039741c65[m
+Merge: ca569c4 24a6cec
+Author: Pieter Bos <nxtprgr@gmail.com>
+Date:   Mon Oct 28 11:54:37 2013 +0100
+
+    Merge branch 'develop' of github.com:niomaster/eca-rule-engine into develop
+
+[33mcommit ca569c464be61c1dcbe94877cf6a8dc8c837487b[m
+Author: Pieter Bos <nxtprgr@gmail.com>
+Date:   Mon Oct 28 11:53:30 2013 +0100
+
+    asdf
+
+[33mcommit 24a6cec9c209d05223b817b2a855f8448f5e0013[m
+Author: Magnificus36 <magnificus@outlook.com>
+Date:   Mon Oct 28 11:52:21 2013 +0100
+
+    ignore .pyc
+
+[33mcommit 17180b0ba73284a37872fbad68d51f91bb9b832e[m
+Author: Pieter Bos <nxtprgr@gmail.com>
+Date:   Mon Oct 28 11:39:14 2013 +0100
+
+    Readme
+
+[33mcommit 2e9a1553f10156e37b51fb5fd393c98011434f35[m
+Author: Brend Wanders <b.wanders@utwente.nl>
+Date:   Tue Oct 8 15:18:31 2013 +0200
+
+    Corrects handling of input files.
+    
+    This does not fix the whole of ECA, as the parser still uses the
+    current working directory to determine the loading of ECA modules.
+
+[33mcommit 21334a87684bd38d9a5c505eebac0ecc0c46464f[m
+Author: Brend Wanders <b.wanders@utwente.nl>
+Date:   Tue Oct 8 15:18:01 2013 +0200
+
+    Adds private run script to git ignore.
+
+[33mcommit b61f9197f9aa15d59fe1a5d1a7d59fb4b9d99813[m
+Author: Brend Wanders <b.wanders@utwente.nl>
+Date:   Tue Oct 8 15:08:37 2013 +0200
+
+    Adds --run flag for browserless running
+
+[33mcommit 8b4ab456e922d986e0f641ab1ac00271fb2a2acb[m
+Author: janflokstra <jan.flokstra@utwente.nl>
+Date:   Tue Oct 1 09:10:52 2013 +0200
+
+    remove default debugging output
+
+[33mcommit ffdc35ff4c34ac13bf6053802565f79a1104b788[m
+Merge: f15d375 61479e6
+Author: janflokstra <jan.flokstra@utwente.nl>
+Date:   Tue Oct 1 09:02:19 2013 +0200
+
+    - merge forced by github
+
+[33mcommit f15d3753acf77a417c1488e8c4766fac2af35f4a[m
+Author: janflokstra <jan.flokstra@utwente.nl>
+Date:   Tue Oct 1 09:02:03 2013 +0200
+
+    add publish debug switch
+
+[33mcommit 61479e6fd25c96cbbf400af3ef44cff4e658eb67[m
+Author: Maurice van Keulen <m.vankeulen@utwente.nl>
+Date:   Tue Oct 1 08:01:25 2013 +0200
+
+    Added new demo
+    Copied index.html to fourgadgetdemo.html such that we have *.ECA and
+    *.html in sync
+
+[33mcommit a6737fdda9c83588f8c8c7aba5872616c76efc9c[m
+Author: Maurice van Keulen <m.vankeulen@utwente.nl>
+Date:   Mon Sep 30 21:10:23 2013 +0200
+
+    Changed port number from 6789 to 7737 (same as noDUI)
+
+[33mcommit 2648b8dfcd815be2d4096ebdbb8e8f1e55e8ea8a[m
+Author: janflokstra <jan.flokstra@utwente.nl>
+Date:   Mon Sep 30 17:47:09 2013 +0200
+
+    solve True/true/False/false problem
+
+[33mcommit a288888544755cb5699ac147b7937424282ab1ea[m
+Author: janflokstra <jan.flokstra@utwente.nl>
+Date:   Mon Sep 30 17:28:05 2013 +0200
+
+    fix browser wait problem in noDUI
+
+[33mcommit ed0d418fc3720d4b7df12ee985dfd8e1dda66571[m
+Author: janflokstra <jan.flokstra@utwente.nl>
+Date:   Mon Sep 30 15:38:38 2013 +0200
+
+    Improve exception handling actions and automatically determine start/stop times after loding ECA file
+
+[33mcommit cb9c9fcf04acc7fcfc6fd5017e364f145f285a7b[m
+Author: janflokstra <jan.flokstra@utwente.nl>
+Date:   Mon Sep 30 14:04:53 2013 +0200
+
+    repair uminus bug
+
+[33mcommit e3917e1fefd6f394aab1fd63314121e39264e3df[m
+Author: janflokstra <jan.flokstra@utwente.nl>
+Date:   Mon Sep 30 11:39:01 2013 +0200
+
+    fix noDUI dbconnect and fcall1() string conversion bug
+
+[33mcommit 89b479d29ba63a17006216c6e84f4d9be90dbdd9[m
+Author: Brend Wanders <b.wanders@utwente.nl>
+Date:   Fri Sep 27 10:44:39 2013 +0200
+
+    Removes and ignores generated parser files.
+
+[33mcommit f00ea7d32fff29859ff143bb109e319bec838b0d[m
+Author: janflokstra <jan.flokstra@utwente.nl>
+Date:   Fri Sep 27 10:42:32 2013 +0200
+
+    give . low precedence
+
+[33mcommit eab1f2aca19b47a9c24892760a14747ccaa2bdd3[m
+Author: janflokstra <jan.flokstra@utwente.nl>
+Date:   Fri Sep 27 10:37:25 2013 +0200
+
+    add the big twitter data sets
+
+[33mcommit 40587fbed909d927cc7aa1aaee52a93dd61849a4[m
+Author: janflokstra <jan.flokstra@utwente.nl>
+Date:   Fri Sep 27 10:30:02 2013 +0200
+
+    - solve method call and Event attribute problems
+
+[33mcommit f401b13c050f28a42a40733f1f408997a5fd1e48[m
+Author: janflokstra <jan.flokstra@utwente.nl>
+Date:   Thu Sep 26 16:33:51 2013 +0200
+
+    no comment
+
+[33mcommit ca4f34fd5a461e00c2dd823c6d00f98beff42b4f[m
+Author: janflokstra <jan.flokstra@utwente.nl>
+Date:   Thu Sep 26 14:52:40 2013 +0200
+
+    small updates
+
+[33mcommit 3800e1d8b9af2794cbd575eb131f391274707ddf[m
+Author: janflokstra <jan.flokstra@utwente.nl>
+Date:   Thu Sep 26 09:37:01 2013 +0200
+
+    - check in the first conversion from the svn repo
+
+[33mcommit 2767746950e346b701d30aa29c37f1397aaff0c9[m
+Author: Maurice van Keulen <m.vankeulen@utwente.nl>
+Date:   Thu Sep 19 21:25:38 2013 +0200
+
+    Added screenshot of DUI-window for documentation
+
+[33mcommit 559a99596b041fbcd5cf8a2cabecc0db5f58dd1a[m
+Author: janflokstra <jan.flokstra@utwente.nl>
+Date:   Wed Sep 18 08:35:00 2013 +0200
+
+    first commit

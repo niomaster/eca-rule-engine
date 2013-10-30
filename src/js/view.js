@@ -28,6 +28,7 @@ define(["jquery", "hcharts", "highcharts_uttheme", "gadget"],
             factory: function() {
                 /* The ViewModel: */
                 this.thermometerViews = [];
+                this.imageViews = [];
                 this.chartViews = [];
                 this.mapsViews = [];
                 this.tweetListViews = [];
@@ -90,7 +91,6 @@ define(["jquery", "hcharts", "highcharts_uttheme", "gadget"],
                             this.messageView = theMessage;
                         }.bind(this),
                         function() {
-                            console.log("Button of Messager clicked.");
                             buttonHandler(
                                 this.messageView.eventType.val(),
                                 this.messageView.eventData.val());
@@ -187,13 +187,22 @@ define(["jquery", "hcharts", "highcharts_uttheme", "gadget"],
                     this.tweetListViews[id] = theTweetList;
                 }.bind(this));
             },
-
+            
             createThermometerGadget: function(cell, id, title) {
                 $(cell).addThermometerGadget({
                     id: id,
                     title: title
                 }, function(thermometerGadget) {
                     this.thermometerViews[id] = thermometerGadget;
+                }.bind(this));
+            },
+            
+            createImageGadget: function(cell, id, title) {
+                $(cell).addImageGadget({
+                    id: id,
+                    title: title
+                }, function(imageGadget) {
+                    this.imageViews[id] = imageGadget;
                 }.bind(this));
             },
             
@@ -312,8 +321,6 @@ define(["jquery", "hcharts", "highcharts_uttheme", "gadget"],
              * @memberof module:view
              */
             updateWidget: function(chartOptions) {
-                console.log("Function updateWidget called: " + chartOptions +
-                    ".");
                 var newOptions = "";
                 try {
                     // TODO: check why JSON parsing is needed here:

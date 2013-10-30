@@ -39,6 +39,8 @@ define(["jquery", "handlers", "view"],
                                    "error", "createAlertGadget", 
                                    "createThermometerGadget", 
                                    "updateThermometer", "alert",
+                                   "createImageGadget",
+                                   "updateImage", "alert",
                                    "createMapsGadget", "addMapsMarker",
                                    "createChart", "createTweetlistGadget",
                                    "addTweet", "createWordCloudGadget",
@@ -47,8 +49,6 @@ define(["jquery", "handlers", "view"],
                 /* Initialize eventsource component: */
                 for (var eventType in this.eventTypes) {
                     if (this.eventTypes.hasOwnProperty(eventType)) {
-                        console.log("Initializing event type " +
-                            this.eventTypes[eventType] + ".");
                         this.initEventSource(this.eventTypes[eventType]);
                     }
                 }
@@ -100,10 +100,6 @@ define(["jquery", "handlers", "view"],
              * @memberof module:tweetboard
              */
             handleEvent: function(event) {
-                var logMessage = "EventSource: message received, type is " +
-                    event.type + ".";
-                console.log(logMessage);
-                this.myView.monitorView.append(logMessage + "\n");
                 var handlerName = event.type + "EventReceived";
                 if (typeof handlers[handlerName] !== "undefined") {
                     var parsedData = {};

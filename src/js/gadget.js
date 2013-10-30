@@ -42,7 +42,6 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
 		theGadget.append(theTitle);
 		theGadget.append(theContents);
 		this.append(theGadget);
-        console.log(this);
 		return this;
 	};
 	
@@ -264,6 +263,59 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
       */
     $.fn.updateThermometer = function(split) {
         this.text('split = ' + split);
+    };
+    
+    /** Create a image gadget that shows tweeted images.
+      * 
+      * @function addImageGadget
+      * @param {Object} options Settings object with "id" and "title" keys
+      * @param {Function} addToModel callback to establish binding
+      * @memberof module:gadget
+      */
+    $.fn.addImageGadget = function(options, addToModel) {
+        var contents = [];
+        
+        contents[0] = $('<ol class="imagegadget-contents ' +
+                        'stream-items js-navigable-stream"></ol>');
+        this.addClass("imagegadget-cell");
+        this.addGadget(options, contents);
+        addToModel(this);
+        return this;
+    };
+
+    /** Add a image to the current image gadget
+      *
+      * 
+      * @function addImage
+      * @param {String} src Source of the image
+      * @memberof module:gadget
+      */
+    $.fn.addImage = function(src) {
+        console.log("[13] addImage called!");
+
+        // TODO: Check if selection has correct type
+        var newItem = $('<li class="js-stream-item stream-item stream-item ' +
+                        'expanding-stream-item"></li>');
+        var imageDiv = $('<div class="tweet original-tweet js-stream-tweet ' +
+                         'js-actionable-tweet js-profile-popup-actionable ' +
+                         'js-original-tweet"></div>');
+        var contentDiv = $('<div class="content"></div>');
+        
+        // Build a image:
+        var image = $("<img>").addClass("image");
+        image.attr("src", src);
+        contentDiv.append(image);
+        
+        // Build outer structure of containing divs:
+        imageDiv.append(contentDiv);
+        newItem.append(imageDiv);
+        var theGadget = this.find("ol");
+        theGadget.prepend(newItem);
+        
+        if (theGadget.children().size() > 4) {
+            theGadget.children().last().remove();
+        }
+        return this;
     };
     
     $.fn.addTweet = function(tweet) {
