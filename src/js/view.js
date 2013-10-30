@@ -28,6 +28,7 @@ define(["jquery", "hcharts", "highcharts_uttheme", "gadget"],
             factory: function() {
                 /* The ViewModel: */
                 this.thermometerViews = [];
+                this.pictureViews = [];
                 this.chartViews = [];
                 this.mapsViews = [];
                 this.tweetListViews = [];
@@ -187,13 +188,22 @@ define(["jquery", "hcharts", "highcharts_uttheme", "gadget"],
                     this.tweetListViews[id] = theTweetList;
                 }.bind(this));
             },
-
+            
             createThermometerGadget: function(cell, id, title) {
                 $(cell).addThermometerGadget({
                     id: id,
                     title: title
                 }, function(thermometerGadget) {
                     this.thermometerViews[id] = thermometerGadget;
+                }.bind(this));
+            },
+            
+            createPictureGadget: function(cell, id, title) {
+                $(cell).addPictureGadget({
+                    id: id,
+                    title: title
+                }, function(pictureGadget) {
+                    this.pictureViews[id] = pictureGadget;
                 }.bind(this));
             },
             
