@@ -298,11 +298,8 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
         console.log("[13] addImage called!");
 
         // TODO: Check if selection has correct type
-        var newItem = $('<li class="js-stream-item stream-item stream-item ' +
-                        'expanding-stream-item"></li>');
-        var imageDiv = $('<div class="tweet original-tweet js-stream-tweet ' +
-                         'js-actionable-tweet js-profile-popup-actionable ' +
-                         'js-original-tweet"></div>');
+        var newItem = $('<li></li>');
+        var imageDiv = $('<div></div>');
         var contentDiv = $('<div class="content"></div>');
         
         // Build a image:

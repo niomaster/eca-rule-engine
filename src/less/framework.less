@@ -98,5 +98,30 @@ h6 {
 
 // Panel styles
 .panel {
-    border-radius: 4px;
+    margin-bottom: 1em;
+
+    background: @background-color-lighter;
+
+    overflow: hidden;
+}
+
+// Progress bar styles
+.progress {
+    width: 90%;
+    margin: 1em auto;
+
+    min-height: 1em;
+    background: @red-color;
+
+    border-radius: 0.5em;
+}
+
+.happy-bar {
+    min-height: 1em;
+    background: @green-color;
+
+    border-top-left-radius:  0.5em;
+    border-bottom-left-radius: 0.5em;
+
+    -webkit-transition: width 10s;
 }
