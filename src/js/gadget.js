@@ -42,7 +42,6 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
 		theGadget.append(theTitle);
 		theGadget.append(theContents);
 		this.append(theGadget);
-        console.log(this);
 		return this;
 	};
 	
@@ -266,48 +265,50 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
         this.text('split = ' + split);
     };
     
-    /** Create a picture gadget that shows tweeted pictures.
+    /** Create a image gadget that shows tweeted images.
       * 
-      * @function addPictureGadget
+      * @function addImageGadget
       * @param {Object} options Settings object with "id" and "title" keys
       * @param {Function} addToModel callback to establish binding
       * @memberof module:gadget
       */
-    $.fn.addPictureGadget = function(options, addToModel) {
+    $.fn.addImageGadget = function(options, addToModel) {
         var contents = [];
         
-        contents[0] = $('<ol class="picturegadget-contents ' +
+        contents[0] = $('<ol class="imagegadget-contents ' +
                         'stream-items js-navigable-stream"></ol>');
-        this.addClass("picturegadget-cell");
+        this.addClass("imagegadget-cell");
         this.addGadget(options, contents);
         addToModel(this);
         return this;
     };
 
-    /** Add a picture to the current picture gadget
+    /** Add a image to the current image gadget
       *
       * 
-      * @function addPicture
-      * @param {String} src Source of the picture
+      * @function addImage
+      * @param {String} src Source of the image
       * @memberof module:gadget
       */
-    $.fn.addPicture = function(src) {
+    $.fn.addImage = function(src) {
+        console.log("[13] addImage called!");
+
         // TODO: Check if selection has correct type
         var newItem = $('<li class="js-stream-item stream-item stream-item ' +
                         'expanding-stream-item"></li>');
-        var pictureDiv = $('<div class="tweet original-tweet js-stream-tweet ' +
+        var imageDiv = $('<div class="tweet original-tweet js-stream-tweet ' +
                          'js-actionable-tweet js-profile-popup-actionable ' +
                          'js-original-tweet"></div>');
         var contentDiv = $('<div class="content"></div>');
         
         // Build a image:
-        var picture = $("<img>").addClass("picture");
-        picture.attr("src", src);
-        contentDiv.append(picture);
+        var image = $("<img>").addClass("image");
+        image.attr("src", src);
+        contentDiv.append(image);
         
         // Build outer structure of containing divs:
-        pictureDiv.append(contentDiv);
-        newItem.append(pictureDiv);
+        imageDiv.append(contentDiv);
+        newItem.append(imageDiv);
         var theGadget = this.find("ol");
         theGadget.prepend(newItem);
         
