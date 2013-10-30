@@ -35,8 +35,12 @@ define(["jquery", "handlers", "view"],
                 // TODO: handle case where Eventsource is not implemented:
                 this.source = new EventSource("events");
                 // TODO: eventTypes should be initialized by module handler
-                this.eventTypes = ["buildInfo", "message", "addpoint", "appendpoint", "open",
-                                   "error", "createAlertGadget", "alert",
+                this.eventTypes = ["buildInfo", "message", "addpoint", "open",
+                                   "error", "createAlertGadget", 
+                                   "createThermometerGadget", 
+                                   "updateThermometer", "alert",
+                                   "createImageGadget",
+                                   "updateImage", "alert",
                                    "createMapsGadget", "addMapsMarker",
                                    "createChart", "createTweetlistGadget",
                                    "addTweet", "createWordCloudGadget",
@@ -45,8 +49,6 @@ define(["jquery", "handlers", "view"],
                 /* Initialize eventsource component: */
                 for (var eventType in this.eventTypes) {
                     if (this.eventTypes.hasOwnProperty(eventType)) {
-                        console.log("Initializing event type " +
-                            this.eventTypes[eventType] + ".");
                         this.initEventSource(this.eventTypes[eventType]);
                     }
                 }
@@ -98,10 +100,6 @@ define(["jquery", "handlers", "view"],
              * @memberof module:tweetboard
              */
             handleEvent: function(event) {
-                var logMessage = "EventSource: message received, type is " +
-                    event.type + ", data is " + event.data + ".";
-                console.log(logMessage);
-                this.myView.monitorView.append(logMessage + "\n");
                 var handlerName = event.type + "EventReceived";
                 if (typeof handlers[handlerName] !== "undefined") {
                     var parsedData = {};

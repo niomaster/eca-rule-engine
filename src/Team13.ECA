@@ -1,0 +1,3 @@
+IMPORT standaard
+IMPORT components/bata_gerelateerd
+IMPORT components/wordcloud

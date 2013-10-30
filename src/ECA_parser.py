@@ -108,8 +108,11 @@ def p_ecafile_import(p):
 	try:
 		if p[2] not in modules:
 			modules[p[2]] = imp.load_source('module.'+p[2],os.path.join(os.getcwd(),'modules',p[2]+'.py'))
-	except ImportError as e:
-		raise Exception('Module "'+p[2]+'" not found in line '+str(p.lineno(2)));
+	except (ImportError, IOError):
+		try:
+			parse_part(open(p[2] + ".ECA").read())
+		except IOError as e:
+			raise Exception('Module "'+p[2]+'" not found in line '+str(p.lineno(2)));
 	else:
 		try:
 			modules[p[2]].init(globals())
@@ -605,14 +608,30 @@ def has_errors():
 	global lex_error, parse_error
 	return ECA_parser_lex.lex_error or parse_error
 	
-def parse(string):
-	reset()
+lexer_stack = []
+log = None
+
+def parse_part(string):
+	if hasattr(lexer, "paren"):
+		lexer_stack.append((lexer.lineno, lexer.paren, lexer.sbrack))
+	
 	lexer.lineno = 1
 	lexer.paren = 0
 	lexer.sbrack = 0
-	logging.basicConfig(filename='log.log',level=logging.DEBUG)
-	log = logging.getLogger()
+
 	parser.parse(string,tracking=True,debug=log)
+
+	if lexer_stack:
+		lexer.lineno, lexer.paren, lexer.sbrack = lexer_stack.pop()
+
+def parse(string):
+	reset()
+	logging.basicConfig(filename='log.log',level=logging.DEBUG)
+	global log
+	log = logging.getLogger()
+
+	parse_part(string)
+
 	save_vars()
 	
 # Saves the initial state of the variables

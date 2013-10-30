@@ -1,58 +1,45 @@
-/* UT-style colors:
+/* Aanpassingen aan bootstrap componenten, kijken of dit netter kan d.m.v. een eigen theme */
+#menu {
+    margin-bottom: 0;
+}
 
-#3F9C35, #CF0072, #FED100, #0094B3, #C60C30, #00675A,
-             #4F2D7F, #887B1B
+#margin-fix {
+    margin: 0 15px;
+}
 
+.row .col-md-6 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#bata_tweetlist {
+    position: absolute;
+    top: 52px;
+    bottom: 0;
+    right: 0;
+
+    box-shadow: inset 11px 0 20px -20px;
+    background: #eee;
+}
+
+div.panel {
+  border-radius: 0;
+  min-height: 200px;
+}
+
+/* Fixes voor de inner shadow van de tweetlist */
+li.stream-item {
+    background: none;
+}
+
+.tweet:hover {
+    background: none;
+}
+
+
+/*
+--- CSS voor de wordclouds
 */
-
-html {
-    height: 100%;
-}
-
-body {
-	font-family: Arial Narrow, Arial, Helvetica, sans-serif;
-	height: 100%;
-}
-
-.gadget { 
-	border: 1px solid black; 
-	box-shadow: 0 1px 2px rgba(0,0,0,0.7); 
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-.gadget-title { background-color: #000000; color: #FFFFFF; }
-
-.gadget textarea {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	width: 100%;
-}
-
-.alertgadget {
-	background-color: #CF0072;
-	color: #FFFFFF;
-	border: 2px solid #000000; 
-}
-
-.alertgadget-cell {
-    transition: height 1s;
-    -webkit-transition: height 1s;
-}
-
-.mapsgadget {
-	width: 100%;
-	height: 400px;
-}
-
-.chartgadget-contents {
-	width: 100%;
-	height: 400px;
-}
-
-.gadget-contents { background-color: #FFFFFF; }
-
 div.jqcloud {
   font-size: 10px;
   line-height: normal;

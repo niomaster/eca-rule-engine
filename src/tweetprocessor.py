@@ -70,7 +70,7 @@ def shutdown_tweetprocessor(reason):
     # 3. Shutdown server:
     global HTTPD
     if HTTPD is not None:
-        HTTPD.shutdown()    
+        HTTPD.shutdown()
 
 
 def publisher(listener_id, action):

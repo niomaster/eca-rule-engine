@@ -235,6 +235,88 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
         addToModel(this);
         return this;
     };
+
+    /** Create a thermometer gadget that shows emotion, with green on the left
+      * and red on the right.
+      *
+      * @todo Add a bootstrap progress bar instead of the current div
+      * 
+      * @function addThermometerGadget
+      * @param {Object} options Settings object with "id" and "title" keys
+      * @param {Function} addToModel callback to establish binding
+      * @memberof module:gadget
+      */
+    $.fn.addThermometerGadget = function(options, addToModel) {
+        this.addGadget(options, [$('<div>').text('HOI TEAM 13 XD LOL').addClass('well')]);
+        addToModel(this);
+        return this;
+    };
+
+    /** Update the current thermometer gadget
+      *
+      * @todo Modifiy the function to update the bootstrap progress bar in .gadget-contents
+      * instead of the entire gadget.
+      * 
+      * @function updateThermometer
+      * @param {Float} split Position of the split between red and green, between 0.0 and 1.0
+      * @memberof module:gadget
+      */
+    $.fn.updateThermometer = function(split) {
+        this.text('split = ' + split);
+    };
+    
+    /** Create a image gadget that shows tweeted images.
+      * 
+      * @function addImageGadget
+      * @param {Object} options Settings object with "id" and "title" keys
+      * @param {Function} addToModel callback to establish binding
+      * @memberof module:gadget
+      */
+    $.fn.addImageGadget = function(options, addToModel) {
+        var contents = [];
+        
+        contents[0] = $('<ol class="imagegadget-contents ' +
+                        'stream-items js-navigable-stream"></ol>');
+        this.addClass("imagegadget-cell");
+        this.addGadget(options, contents);
+        addToModel(this);
+        return this;
+    };
+
+    /** Add a image to the current image gadget
+      *
+      * 
+      * @function addImage
+      * @param {String} src Source of the image
+      * @memberof module:gadget
+      */
+    $.fn.addImage = function(src) {
+        console.log("[13] addImage called!");
+
+        // TODO: Check if selection has correct type
+        var newItem = $('<li class="js-stream-item stream-item stream-item ' +
+                        'expanding-stream-item"></li>');
+        var imageDiv = $('<div class="tweet original-tweet js-stream-tweet ' +
+                         'js-actionable-tweet js-profile-popup-actionable ' +
+                         'js-original-tweet"></div>');
+        var contentDiv = $('<div class="content"></div>');
+        
+        // Build a image:
+        var image = $("<img>").addClass("image");
+        image.attr("src", src);
+        contentDiv.append(image);
+        
+        // Build outer structure of containing divs:
+        imageDiv.append(contentDiv);
+        newItem.append(imageDiv);
+        var theGadget = this.find("ol");
+        theGadget.prepend(newItem);
+        
+        if (theGadget.children().size() > 4) {
+            theGadget.children().last().remove();
+        }
+        return this;
+    };
     
     $.fn.addTweet = function(tweet) {
         // TODO: Check if selection has correct type
