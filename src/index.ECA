@@ -8,12 +8,17 @@ IMPORT thermometer
 CELL 'bata_tweetlist' {'event': 'createTweetlistGadget', 'data': [json_serialize({"cell": "bata_tweetlist", "id": "bataTweetlist"})]}
 CELL 'stand_tweetlist' {'event': 'createTweetlistGadget', 'data': [json_serialize({"cell": "stand_tweetlist", "id": "standTweetlist", "title": "Laatste updates tussenstand"})]}
 CELL 'wordcloudcell' {'event': 'createWordCloudGadget', 'data': [json_serialize({"cell": "wordcloudcell", "id": "myWordCloud", "title": "Emotie cloud"})]}
-CELL 'thermometer' {'event': 'createThermometerGadget', 'data': [json_serialize({"cell": "thermometercell", "id": "myThermometer", "title": "Emotie"})]}
+CELL 'thermometery' {'event': 'createThermometerGadget', 'data': [json_serialize({"cell": "thermometercell", "id": "myThermometer", "title": "Emotie"})]}
+#CELL 'tweetcountcell' {'event': 'createThermometerGadget', 'data': [json_serialize({"cell": "tweetcountcell", "id": "myTweetcount", "title": "Count"})]}
 
 DECLARE tussenstand = csv_read_kv_dict('modules/tussenstand.csv',1,0)
 DECLARE bata_gerelateerd = csv_read_kv_dict('modules/bata_gerelateerd.csv',1,0)
 DECLARE sentiment = csv_read_kv_dict('modules/emotie.csv',1,0)
 DECLARE ntweets = 0
+DECLARE ntweets_emotie_loos = 0
+DECLARE ntweets_emotie = 0
+DECLARE ntweets_emotie_positief = 0
+DECLARE ntweets_emotie_negatief = 0
 DECLARE word_dict = {}
 
 RULE: the_finalization_rule
@@ -29,12 +34,13 @@ RULE: new_tweet_rule
 EVENT: new_tweet
 CONDITION: bata_gerelateerd[new_tweet.id] == "Y"
 ACTION:	NEWEVENT new_bata_tweet {tweet : new_tweet}
-    updateThermometer('myThermometer', ntweets)
 
 RULE: new_bata_tweet_rule
 EVENT: new_bata_tweet
 CONDITION: True
 ACTION:	add_tweetlist_tweet('bataTweetlist', new_bata_tweet.tweet.json_dict)
+	ntweets += 1
+	#updateThermometer('myTweetcount', ntweets)
 
 RULE: new_bata_tweet_rule_stand
 EVENT: new_bata_tweet
@@ -50,8 +56,9 @@ ACTION:	NEWEVENT new_emotie_tweet {tweet : new_bata_tweet.tweet}
 RULE: new_emotie_tweet_rule
 EVENT: new_emotie_tweet
 CONDITION: True
-ACTION:	ntweets += 1
-	FORALL w IN getwords(new_emotie_tweet.tweet.text): NEWEVENT new_emotie_word {word: w}
+ACTION:	FORALL w IN getwords(new_emotie_tweet.tweet.text): NEWEVENT new_emotie_word {word: w}
+	ntweets_emotie += 1
+	updateThermometer('myThermometer', (ntweets_emotie_positief / ntweets_emotie) )
 
 RULE: new_emotie_word_rule
 EVENT: new_emotie_word
@@ -66,8 +73,8 @@ ACTION:	NEWEVENT new_emotie_loze_tweet {tweet : new_bata_tweet.tweet}
 RULE: new_emotie_loze_tweet_rule
 EVENT: new_emotie_loze_tweet
 CONDITION: True
-ACTION:	ntweets += 1
-	FORALL w IN getwords(new_emotie_loze_tweet.tweet.text): NEWEVENT new_emotie_loos_word {word: w}
+ACTION:	FORALL w IN getwords(new_emotie_loze_tweet.tweet.text): NEWEVENT new_emotie_loos_word {word: w}
+	ntweets_emotie_loos += 1
 
 RULE: new_emotie_loos_word_rule
 EVENT: new_emotie_loos_word
@@ -78,3 +85,23 @@ RULE: wordcloud_updater
 EVENT: new_bata_tweet
 CONDITION: (ntweets % 10) == 0
 ACTION:	update_wordcloud('myWordCloud', filter_notgreater(word_dict, 0))
+
+RULE: new_bata_tweet_rule_emotie_p
+EVENT: new_bata_tweet
+CONDITION: sentiment[new_bata_tweet.tweet.id] == "+"
+ACTION:	NEWEVENT new_emotie_positief_tweet {tweet : new_bata_tweet.tweet}
+
+RULE: new_emotie_positief_tweet_rule
+EVENT: new_emotie_positief_tweet
+CONDITION: True
+ACTION: ntweets_emotie_positief += 1
+
+RULE: new_bata_tweet_rule_emotie_n
+EVENT: new_bata_tweet
+CONDITION: sentiment[new_bata_tweet.tweet.id] == "-"
+ACTION:	NEWEVENT new_emotie_negatief_tweet {tweet : new_bata_tweet.tweet}
+
+RULE: new_emotie_negatief_tweet_rule
+EVENT: new_emotie_negatief_tweet
+CONDITION: True
+ACTION: ntweets_emotie_negatief += 1
