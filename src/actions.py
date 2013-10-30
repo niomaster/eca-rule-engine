@@ -61,6 +61,8 @@ def cell_definition(cell, gadget, lambda_options):
         return lambda event: create_tweetlist_gadget(cell, options['id'], options['title'])
     elif gadget == 'wordcloud':
         return lambda event: create_wordcloud_gadget(cell, options['id'], options['title'],options['cloud'])
+    elif gadget == 'thermometer':
+        return lambda event: create_thermometer_gadget(cell, options['id'], options['title'])
     else:
         raise Exception('Gadget type does not exist: '+gadget)
 
@@ -141,6 +143,13 @@ def create_alert_gadget(cell, gadget_id, gadget_title):
             "data": [_serialize({"id": gadget_id, "cell": cell,
                                  "title": gadget_title})]})
 
+def create_thermometer_gadget(cell, gadget_id, gadget_title):
+    return _encode({    "event": "createThermometerGadget", 
+                        "data": [ _serialize({ "id": gadget_id, "cell": cell, "title": gadget_title }) ] })
+
+def update_thermometer(gadget_id, split):
+    return _encode({    "event": "updateThermometer",
+                        "data": [ _serialize({ "id": gadget_id, "split": split }) ]})
 
 def alert(alert_text, gadget_id):
     """Show an alert (not a message) in the alert gadget identified by id.
@@ -356,6 +365,8 @@ action_functions = {
 	"add_point" : ( 3, fm.fcall3(add_point)),
 	"message" : ( 1, fm.fcall1(message)),
 	"create_alert_gadget" : ( 3, fm.fcall3(create_alert_gadget)),
+    "create_thermometer_gadget": (3, fm.fcall3(create_thermometer_gadget)),
+    "update_thermometer": (2, fm.fcall2(update_thermometer)),
 	"alert" : ( 2, fm.fcall2(alert)),
 	"create_general_chart" : ( 4, fm.fcall4(create_general_chart)),
 	"create_maps_gadget" : ( 4, fm.fcall4(create_maps_gadget)),

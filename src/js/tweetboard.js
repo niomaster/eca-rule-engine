@@ -36,7 +36,9 @@ define(["jquery", "handlers", "view"],
                 this.source = new EventSource("events");
                 // TODO: eventTypes should be initialized by module handler
                 this.eventTypes = ["buildInfo", "message", "addpoint", "open",
-                                   "error", "createAlertGadget", "alert",
+                                   "error", "createAlertGadget", 
+                                   "createThermometerGadget", 
+                                   "updateThermometer", "alert",
                                    "createMapsGadget", "addMapsMarker",
                                    "createChart", "createTweetlistGadget",
                                    "addTweet", "createWordCloudGadget",
@@ -99,7 +101,7 @@ define(["jquery", "handlers", "view"],
              */
             handleEvent: function(event) {
                 var logMessage = "EventSource: message received, type is " +
-                    event.type + ", data is " + event.data + ".";
+                    event.type + ".";
                 console.log(logMessage);
                 this.myView.monitorView.append(logMessage + "\n");
                 var handlerName = event.type + "EventReceived";
