@@ -247,7 +247,10 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
       * @memberof module:gadget
       */
     $.fn.addThermometerGadget = function(options, addToModel) {
-        this.addGadget(options, [$('<div>').text('HOI TEAM 13 XD LOL').addClass('well')]);
+        var content = [$('<div>').addClass('progress')
+            .append($('<div>').addClass('happy-bar').width('50%'))];
+
+        this.addGadget(options, content);
         addToModel(this);
         return this;
     };
@@ -262,7 +265,8 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
       * @memberof module:gadget
       */
     $.fn.updateThermometer = function(split) {
-        this.text('split = ' + split);
+        this.find('.happy-bar').width(split * 100 + '%');
+
     };
     
     /** Create a image gadget that shows tweeted images.
