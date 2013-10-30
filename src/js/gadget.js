@@ -266,6 +266,57 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
         this.text('split = ' + split);
     };
     
+    /** Create a picture gadget that shows tweeted pictures.
+      * 
+      * @function addPictureGadget
+      * @param {Object} options Settings object with "id" and "title" keys
+      * @param {Function} addToModel callback to establish binding
+      * @memberof module:gadget
+      */
+    $.fn.addPictureGadget = function(options, addToModel) {
+        var contents = [];
+        
+        contents[0] = $('<ol class="picturegadget-contents ' +
+                        'stream-items js-navigable-stream"></ol>');
+        this.addClass("picturegadget-cell");
+        this.addGadget(options, contents);
+        addToModel(this);
+        return this;
+    };
+
+    /** Add a picture to the current picture gadget
+      *
+      * 
+      * @function addPicture
+      * @param {String} src Source of the picture
+      * @memberof module:gadget
+      */
+    $.fn.addPicture = function(src) {
+        // TODO: Check if selection has correct type
+        var newItem = $('<li class="js-stream-item stream-item stream-item ' +
+                        'expanding-stream-item"></li>');
+        var pictureDiv = $('<div class="tweet original-tweet js-stream-tweet ' +
+                         'js-actionable-tweet js-profile-popup-actionable ' +
+                         'js-original-tweet"></div>');
+        var contentDiv = $('<div class="content"></div>');
+        
+        // Build a image:
+        var picture = $("<img>").addClass("picture");
+        picture.attr("src", src);
+        contentDiv.append(picture);
+        
+        // Build outer structure of containing divs:
+        pictureDiv.append(contentDiv);
+        newItem.append(pictureDiv);
+        var theGadget = this.find("ol");
+        theGadget.prepend(newItem);
+        
+        if (theGadget.children().size() > 4) {
+            theGadget.children().last().remove();
+        }
+        return this;
+    };
+    
     $.fn.addTweet = function(tweet) {
         // TODO: Check if selection has correct type
         var newItem = $('<li class="js-stream-item stream-item stream-item ' +
