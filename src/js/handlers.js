@@ -38,15 +38,25 @@ define(["jquery"],
                 this.myView.createAlerter("#" + data.cell, data.id,
                     data.title);
             },
-
+            
             createThermometerGadgetEventReceived: function(event, data) {
                 console.log('[13] Create! ' + JSON.stringify(data));
                 this.myView.createThermometerGadget("#" + data.cell, data.id, data.title);
             },
-
+            
             updateThermometerEventReceived: function(event, data) {
                 console.log('[13] Update! ' + JSON.stringify(data));
                 this.myView.thermometerViews[data.id].updateThermometer(data.split);
+            },
+            
+            createPictureGadgetEventReceived: function(event, data) {
+                console.log('[13] Create! ' + JSON.stringify(data));
+                this.myView.createPictureGadget("#" + data.cell, data.id, data.title);
+            },
+            
+            updatePictureEventReceived: function(event, data) {
+                console.log('[13] Update! ' + JSON.stringify(data));
+                this.myView.PictureViews[data.id].updatePicture(data.src);
             },
             
             createMapsGadgetEventReceived: function(event, data) {
