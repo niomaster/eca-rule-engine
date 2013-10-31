@@ -1,20 +1,17 @@
 @import "framework.less";
 
-.panel {
-    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.4);
+.panel .gadget-title {
+    color: @header-color;
+    font-weight: bold;
+    text-transform: uppercase;
 
-    border-radius: 4px;
+    padding: 0.4em;
 
-    .gadget-title {
-        text-transform: uppercase;
-        letter-spacing: 0.5pt;
+    background: @background-color-dark;
+}
 
-        padding: 1em;
-    }
-
-    .gadget-content {
-        background: @background-color-lighter;
-    }
+.panel .gadget-content {
+    background: @background-color-lighter;
 }
 
 #bataTweetlist .gadget-title {
@@ -48,9 +45,4 @@
             height: 200px;
         }
     }
-}
-
-#bata_tweetlist {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
 }
