@@ -277,12 +277,12 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
       * @memberof module:gadget
       */
     $.fn.addImageGadget = function(options, addToModel) {
-        var contents = [];
+        // var contents = [];
         
-        contents[0] = $('<ol class="imagegadget-contents ' +
-                        'stream-items js-navigable-stream"></ol>');
-        this.addClass("imagegadget-cell");
-        this.addGadget(options, contents);
+        // contents[0] = $('<ol class="imagegadget-contents ' +
+        //                 'stream-items js-navigable-stream"></ol>');
+        // this.addClass("imagegadget-cell");
+        // this.addGadget(options, contents);
         addToModel(this);
         return this;
     };
@@ -297,27 +297,30 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
     $.fn.addImage = function(src) {
         if(src == '') return;
 
-        console.log("[13] addImage called!");
+        $('body').css('background', 'url(\'' + src + '\')');
+        alert($('body').css('background'));
 
-        // TODO: Check if selection has correct type
-        var newItem = $('<li></li>');
-        var imageDiv = $('<div></div>');
-        var contentDiv = $('<div class="content"></div>');
+        // console.log("[13] addImage called!");
+
+        // // TODO: Check if selection has correct type
+        // var newItem = $('<li></li>');
+        // var imageDiv = $('<div></div>');
+        // var contentDiv = $('<div class="content"></div>');
         
-        // Build a image:
-        var image = $("<img>").addClass("image");
-        image.attr("src", src);
-        contentDiv.append(image);
+        // // Build a image:
+        // var image = $("<img>").addClass("image");
+        // image.attr("src", src);
+        // contentDiv.append(image);
         
-        // Build outer structure of containing divs:
-        imageDiv.append(contentDiv);
-        newItem.append(imageDiv);
-        var theGadget = this.find("ol");
-        theGadget.prepend(newItem);
+        // // Build outer structure of containing divs:
+        // imageDiv.append(contentDiv);
+        // newItem.append(imageDiv);
+        // var theGadget = this.find("ol");
+        // theGadget.prepend(newItem);
         
-        if (theGadget.children().size() > 20) {
-            theGadget.children().last().remove();
-        }
+        // if (theGadget.children().size() > 20) {
+        //     theGadget.children().last().remove();
+        // }
         return this;
     };
     
