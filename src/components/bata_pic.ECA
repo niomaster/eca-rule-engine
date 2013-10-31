@@ -1,0 +1,5 @@
+RULE: new_bata_tweet_rule_images
+EVENT: new_bata_tweet
+CONDITION: NOT (getmediaurl(new_bata_tweet.tweet) IN media_urls)
+ACTION:	updateImage('myImage', getmediaurl(new_bata_tweet.tweet))
+	media_urls.append(getmediaurl(new_bata_tweet.tweet))

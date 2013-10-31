@@ -1,0 +1,11 @@
+RULE: new_tweet_rule
+EVENT: new_tweet
+CONDITION: bata_gerelateerd[new_tweet.id] == "Y"
+ACTION:	NEWEVENT new_bata_tweet {tweet : new_tweet}
+
+RULE: new_bata_tweet_rule
+EVENT: new_bata_tweet
+CONDITION: True
+ACTION:	add_tweetlist_tweet('bataTweetlist', new_bata_tweet.tweet.json_dict)
+	ntweets += 1
+	#updateThermometer('myTweetcount', ntweets)

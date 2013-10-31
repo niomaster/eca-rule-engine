@@ -1,0 +1,24 @@
+RULE: wordcloud_updater
+EVENT: new_bata_tweet
+CONDITION: (ntweets % 10) == 0
+ACTION:	update_wordcloud('myWordCloud', filter_notgreater(word_dict, 0))
+
+RULE: new_emotie_tweet_rule
+EVENT: new_emotie_tweet
+CONDITION: True
+ACTION:	FORALL w IN getwords(new_emotie_tweet.tweet.text): NEWEVENT new_emotie_word {word: w}
+
+RULE: new_emotie_loze_tweet_rule
+EVENT: new_emotie_loze_tweet
+CONDITION: True
+ACTION:	FORALL w IN getwords(new_emotie_loze_tweet.tweet.text): NEWEVENT new_emotie_loos_word {word: w}
+
+RULE: new_emotie_word_rule
+EVENT: new_emotie_word
+CONDITION: NOT ( new_emotie_word.word IN stopwords() )
+ACTION:	IF new_emotie_word.word IN word_dict THEN word_dict[new_emotie_word.word] =  word_dict[new_emotie_word.word] + 1 ELSE word_dict[new_emotie_word.word] = 1
+
+RULE: new_emotie_loos_word_rule
+EVENT: new_emotie_loos_word
+CONDITION: NOT ( new_emotie_loos_word.word IN stopwords() )
+ACTION:	IF new_emotie_loos_word.word IN word_dict THEN word_dict[new_emotie_loos_word.word] =  word_dict[new_emotie_loos_word.word] - 1 ELSE word_dict[new_emotie_loos_word.word] = -1

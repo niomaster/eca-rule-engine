@@ -12,7 +12,7 @@ CELL 'stand_tweetlist' {'event': 'createTweetlistGadget', 'data': [json_serializ
 CELL 'wordcloudcell' {'event': 'createWordCloudGadget', 'data': [json_serialize({"cell": "wordcloudcell", "id": "myWordCloud", "title": "Emotie cloud"})]}
 CELL 'thermometer' {'event': 'createThermometerGadget', 'data': [json_serialize({"cell": "thermometercell", "id": "myThermometer", "title": "Emotiemeter"})]}
 #CELL 'tweetcountcell' {'event': 'createThermometerGadget', 'data': [json_serialize({"cell": "tweetcountcell", "id": "myTweetcount", "title": "Count"})]}
-CELL 'image' {'event': 'createImageGadget', 'data': [json_serialize({"cell": "imagecell", "id": "myImage", "title": "Bata pics"})]}
+CELL 'image' {'event': 'createImageGadget', 'data': [json_serialize({"cell": "imagecell", "id": "myImage"})]}
 
 DECLARE tussenstand = csv_read_kv_dict('modules/tussenstand.csv',1,0)
 DECLARE bata_gerelateerd = csv_read_kv_dict('modules/bata_gerelateerd.csv',1,0)
@@ -33,6 +33,7 @@ ACTION:	print("done")
 	tussenstand = None
 	sentiment = None
 	word_dict = None
+	media_urls = None
 
 RULE: new_tweet_rule
 EVENT: new_tweet
@@ -89,7 +90,7 @@ ACTION:	FORALL w IN getwords(new_emotie_loze_tweet.tweet.text): NEWEVENT new_emo
 RULE: new_emotie_loos_word_rule
 EVENT: new_emotie_loos_word
 CONDITION: NOT ( new_emotie_loos_word.word IN stopwords() )
-ACTION:	IF new_emotie_loos_word.word IN word_dict THEN word_dict[new_emotie_loos_word.word] =  word_dict[new_emotie_loos_word.word] - 1 ELSE word_dict[new_emotie_loos_word.word] = 0
+ACTION:	IF new_emotie_loos_word.word IN word_dict THEN word_dict[new_emotie_loos_word.word] =  word_dict[new_emotie_loos_word.word] - 1 ELSE word_dict[new_emotie_loos_word.word] = -1
 
 RULE: wordcloud_updater
 EVENT: new_bata_tweet

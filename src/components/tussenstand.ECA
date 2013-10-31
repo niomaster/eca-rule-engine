@@ -1,0 +1,4 @@
+RULE: new_bata_tweet_rule_stand
+EVENT: new_bata_tweet
+CONDITION: tussenstand[new_bata_tweet.tweet.id] == "Y"
+ACTION:	add_tweetlist_tweet('standTweetlist', new_bata_tweet.tweet.json_dict)
