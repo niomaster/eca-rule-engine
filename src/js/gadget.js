@@ -228,7 +228,7 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
     $.fn.addTweetListGadget = function(options, addToModel) {
         var contents = [];
         // The class is part of the specification (see the JSDoc comment above:
-        contents[0] = $('<ol class="tweetlistgadget-contents ' +
+        contents[0] = $('<p id="melding">Er zijn nog geen tweets beschikbaar.</p><ol class="tweetlistgadget-contents ' +
                         'stream-items js-navigable-stream"></ol>');
         this.addClass("tweetlistgadget-cell");
         this.addGadget(options, contents);
@@ -367,6 +367,7 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
         tweetDiv.append(contentDiv);
         newItem.append(tweetDiv);
         var theGadget = this.find("ol");
+        this.find('#melding').remove();
         theGadget.prepend(newItem);
         // TODO: remove last one if more than 20
         // alert();
@@ -403,7 +404,7 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
         var contents = [];
         // The class is part of the specification (see the JSDoc comment above:
         contents[0] = $("<div>").addClass("wordcloudgadget-contents").attr("id",
-                            options.id+"Div").width("290px").height("290px");
+                            options.id+"Div").width("100%").height("365px");
         this.addGadget(options, contents);
         $("#" + options.id + "Div").jQCloud(options.cloud);
         addToModel(this);
