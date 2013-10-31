@@ -5,7 +5,7 @@ IMPORT eca_string
 IMPORT utility
 IMPORT thermometer
 IMPORT image
-IMPORT media_url
+IMPORT parse_json
 
 CELL 'bata_tweetlist' {'event': 'createTweetlistGadget', 'data': [json_serialize({"cell": "bata_tweetlist", "id": "bataTweetlist"})]}
 CELL 'stand_tweetlist' {'event': 'createTweetlistGadget', 'data': [json_serialize({"cell": "stand_tweetlist", "id": "standTweetlist", "title": "Laatste updates tussenstand"})]}
@@ -47,7 +47,7 @@ ACTION:	add_tweetlist_tweet('bataTweetlist', new_bata_tweet.tweet.json_dict)
 
 RULE: new_bata_tweet_rule
 EVENT: new_bata_tweet
-CONDITION: getmediaurl(new_bata_tweet.tweet) != ''
+CONDITION: (getmediaurl(new_bata_tweet.tweet) != '') AND NOT isretweet(new_bata_tweet.tweet)
 ACTION:	updateImage('myImage', getmediaurl(new_bata_tweet.tweet))
 
 RULE: new_bata_tweet_rule_stand

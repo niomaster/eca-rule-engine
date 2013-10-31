@@ -11,13 +11,24 @@ def getmediaurl(tweet):
 		j = tweet.data['json']
 		url = json.loads(j)['entities']['media'][0]['media_url']
 	except KeyError:
-		return ''
+		pass
 	
 	return url
 
+def isretweet(tweet):
+	retweet = False
+	try:
+		j = tweet.data['json']
+		retweet = json.loads(j)['retweeted']
+	except KeyError:
+		pass
+	
+	return retweet
+
 
 string_functions = {
-	"getmediaurl": (1, fm.fcall1(getmediaurl))
+	"getmediaurl": (1, fm.fcall1(getmediaurl)),
+	"isretweet": (1, fm.fcall1(isretweet))
 }
 
 ECA_parser.functions.update( string_functions )
