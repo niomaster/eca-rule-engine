@@ -315,7 +315,7 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
         var theGadget = this.find("ol");
         theGadget.prepend(newItem);
         
-        if (theGadget.children().size() > 4) {
+        if (theGadget.children().size() > 20) {
             theGadget.children().last().remove();
         }
         return this;
@@ -370,7 +370,7 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
         theGadget.prepend(newItem);
         // TODO: remove last one if more than 20
         // alert();
-        if (theGadget.children().size() > 4) {
+        if (theGadget.children().size() > 20) {
             theGadget.children().last().remove();
         }
         return this;
