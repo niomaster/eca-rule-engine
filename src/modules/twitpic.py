@@ -32,10 +32,10 @@ def getthumb(url):
 	return r
 
 
-string_functions = {
+twitpic_functions = {
 	"getid": (1, fm.fcall1(getid)),
 	"getid": (1, fm.fcall1(getfull)),
 	"getid": (1, fm.fcall1(getthumb))
 }
 
-ECA_parser.functions.update( string_functions )
+ECA_parser.functions.update( twitpic_functions )

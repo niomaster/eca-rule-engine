@@ -26,9 +26,9 @@ def isretweeted(tweet):
 	return retweet
 
 
-string_functions = {
+parse_json_functions = {
 	"getmediaurl": (1, fm.fcall1(getmediaurl)),
-	"isretweet": (1, fm.fcall1(isretweet))
+	"isretweeted": (1, fm.fcall1(isretweeted))
 }
 
-ECA_parser.functions.update( string_functions )
+ECA_parser.functions.update( parse_json_functions )
