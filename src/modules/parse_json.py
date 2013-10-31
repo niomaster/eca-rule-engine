@@ -15,7 +15,7 @@ def getmediaurl(tweet):
 	
 	return url
 
-def isretweet(tweet):
+def isretweeted(tweet):
 	retweet = False
 	try:
 		j = tweet.data['json']
