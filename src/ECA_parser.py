@@ -110,7 +110,7 @@ def p_ecafile_import(p):
 			modules[p[2]] = imp.load_source('module.'+p[2],os.path.join(os.getcwd(),'modules',p[2]+'.py'))
 	except (ImportError, IOError):
 		try:
-			parse_part(open("components/" + p[2] + ".ECA").read())
+			parse_part(open(p[2] + ".ECA").read())
 		except IOError as e:
 			raise Exception('Module "'+p[2]+'" not found in line '+str(p.lineno(2)));
 	else:
