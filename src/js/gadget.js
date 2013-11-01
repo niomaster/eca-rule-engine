@@ -298,7 +298,6 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
         if(src == '') return;
 
         $('body').css('background', 'url(\'' + src + '\')');
-        alert($('body').css('background'));
 
         // console.log("[13] addImage called!");
 
