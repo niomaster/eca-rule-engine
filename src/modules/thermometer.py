@@ -5,6 +5,7 @@ import fm
 def init(arg):
 	pass
 
+#Update een thermometer gadget, waarvan de id gegeven is, met een nieuwe splitwaarde.
 def update_thermometer(gadget_id, split):
 	return actions.update_thermometer(gadget_id, split)
 

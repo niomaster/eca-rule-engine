@@ -4,6 +4,7 @@ import fm
 def init(arg):
 	pass
 
+#Importeert de python module waarvan de naam is gegeven
 def module(name):
 	return __import__(name)
 

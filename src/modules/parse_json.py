@@ -5,6 +5,7 @@ import json
 def init(arg):
 	pass
 
+#Gegeven een tweet object geeft het de 'media_url' terug indien deze aanwezig was in het json object van de tweet
 def getmediaurl(tweet):
 	url = ''
 	try:
@@ -15,6 +16,7 @@ def getmediaurl(tweet):
 	
 	return url
 
+#Gegeven een tweet object geeft het de waarde van 'retweeted' terug uit het json object
 def isretweeted(tweet):
 	retweet = False
 	try:
