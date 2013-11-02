@@ -297,7 +297,7 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
     $.fn.addImage = function(src) {
         if(src == '') return;
 
-        $('body').css('background', 'url(\'' + src + '\')');
+        $('.bg').attr('src', src);
 
         // console.log("[13] addImage called!");
 
