@@ -84,16 +84,22 @@ h6 {
 
 .col-with-padding {
     box-sizing: border-box;
-    padding: 1em;
+    margin-top: 2.56em;
+    padding: 1em 0.5em;
 }
 
 // Navigation styles
 .navbar {
+    position: fixed;
+    z-index: 100;
     width: 100%;
 
     color: @header-color;
     text-transform: uppercase;
     letter-spacing: 0;
+    text-shadow: 0 1px 0 #000;
+
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 
     .nav-background;
 }
@@ -103,27 +109,28 @@ h6 {
     margin-bottom: 1em;
 
     background: @background-color-lighter;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 
+    height: 100%;
     overflow: hidden;
+    border-radius: 4px;
 }
 
 // Progress bar styles
 .progress {
-    width: 90%;
-    margin: 1em auto;
+    margin: 1em;
 
     min-height: 1em;
     background: @red-color;
 
-    border-radius: 0.5em;
+    border-radius: 4px;
 }
 
 .happy-bar {
     min-height: 1em;
     background: @green-color;
 
-    border-top-left-radius:  0.5em;
-    border-bottom-left-radius: 0.5em;
+    border-radius: 4px 0 0 4px;
 
     -webkit-transition: width 5s;
 }

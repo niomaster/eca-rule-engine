@@ -236,16 +236,17 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
         return this;
     };
 
-    /** Create a thermometer gadget that shows emotion, with green on the left
-      * and red on the right.
-      *
-      * @todo Add a bootstrap progress bar instead of the current div
-      * 
-      * @function addThermometerGadget
-      * @param {Object} options Settings object with "id" and "title" keys
-      * @param {Function} addToModel callback to establish binding
-      * @memberof module:gadget
-      */
+    /**
+     * Creates a thermometer gadget that shows emotion, with green on the left
+     * and red on the right.
+     *
+     * @todo Add a bootstrap progress bar instead of the current div
+     * 
+     * @function addThermometerGadget
+     * @param {Object} options Settings object with "id" and "title" keys
+     * @param {Function} addToModel callback to establish binding
+     * @memberof module:gadget
+     */
     $.fn.addThermometerGadget = function(options, addToModel) {
         var content = [$('<div>').addClass('progress')
             .append($('<div>').addClass('happy-bar').width('50%'))];
@@ -255,27 +256,29 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
         return this;
     };
 
-    /** Update the current thermometer gadget
-      *
-      * @todo Modifiy the function to update the bootstrap progress bar in .gadget-contents
-      * instead of the entire gadget.
-      * 
-      * @function updateThermometer
-      * @param {Float} split Position of the split between red and green, between 0.0 and 1.0
-      * @memberof module:gadget
-      */
+    /** 
+     * Update the current thermometer gadget
+     *
+     * @todo Modifiy the function to update the bootstrap progress bar in .gadget-contents
+     * instead of the entire gadget.
+     * 
+     * @function updateThermometer
+     * @param {Float} split Position of the split between red and green, between 0.0 and 1.0
+     * @memberof module:gadget
+     */
     $.fn.updateThermometer = function(split) {
         this.find('.happy-bar').width(split * 100 + '%');
 
     };
     
-    /** Create a image gadget that shows tweeted images.
-      * 
-      * @function addImageGadget
-      * @param {Object} options Settings object with "id" and "title" keys
-      * @param {Function} addToModel callback to establish binding
-      * @memberof module:gadget
-      */
+    /** 
+     * Create a image gadget that shows tweeted images.
+     * 
+     * @function addImageGadget
+     * @param {Object} options Settings object with "id" and "title" keys
+     * @param {Function} addToModel callback to establish binding
+     * @memberof module:gadget
+     */
     $.fn.addImageGadget = function(options, addToModel) {
         // var contents = [];
         
@@ -287,39 +290,18 @@ define(["jquery", "hcharts", "gmap3", "jqcloud"],
         return this;
     };
 
-    /** Add a image to the current image gadget
-      *
-      * 
-      * @function addImage
-      * @param {String} src Source of the image
-      * @memberof module:gadget
-      */
+    /** 
+     * Add a image to the current image gadget
+     *
+     * 
+     * @function addImage
+     * @param {String} src Source of the image
+     * @memberof module:gadget
+     */
     $.fn.addImage = function(src) {
         if(src == '') return;
 
         $('.bg').attr('src', src);
-
-        // console.log("[13] addImage called!");
-
-        // // TODO: Check if selection has correct type
-        // var newItem = $('<li></li>');
-        // var imageDiv = $('<div></div>');
-        // var contentDiv = $('<div class="content"></div>');
-        
-        // // Build a image:
-        // var image = $("<img>").addClass("image");
-        // image.attr("src", src);
-        // contentDiv.append(image);
-        
-        // // Build outer structure of containing divs:
-        // imageDiv.append(contentDiv);
-        // newItem.append(imageDiv);
-        // var theGadget = this.find("ol");
-        // theGadget.prepend(newItem);
-        
-        // if (theGadget.children().size() > 20) {
-        //     theGadget.children().last().remove();
-        // }
         return this;
     };
     
