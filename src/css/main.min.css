@@ -1,0 +1,152 @@
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Roboto+Slab:400,700);
+.body-background {
+  background: #000;
+}
+.nav-background {
+  background: #031337;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Droid Sans", sans-serif;
+  font-size: 100%;
+  background: #000;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: inherit;
+  font-family: "Roboto Slab", serif;
+  font-weight: normal;
+  padding: 0.39em 0.625em;
+}
+h1,
+h2 {
+  font-size: 2.56em;
+}
+h1 {
+  font-weight: bold;
+}
+h3,
+h4 {
+  font-size: 1.6em;
+}
+h3 {
+  font-weight: bold;
+}
+h5,
+h6 {
+  font-size: 1em;
+}
+h5 {
+  font-weight: bold;
+}
+h6 {
+  text-decoration: underline;
+}
+.container {
+  width: 1024px;
+  overflow: hidden;
+}
+.col-6 {
+  float: left;
+  width: 50%;
+  height: 100%;
+}
+.col-with-padding {
+  box-sizing: border-box;
+  margin-top: 2.56em;
+  padding: 1em 0.5em;
+}
+.navbar {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  color: #eeeeee;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  text-shadow: 0 1px 0 #000;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  background: #031337;
+}
+.panel {
+  margin-bottom: 1em;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  height: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+}
+.progress {
+  margin: 1em;
+  min-height: 1em;
+  background: #6a1010;
+  border-radius: 4px;
+}
+.happy-bar {
+  min-height: 1em;
+  background: #4a6a10;
+  border-radius: 4px 0 0 4px;
+  -webkit-transition: width 5s;
+}
+.tweet,
+.stream-item {
+  background-color: transparent;
+  border-left: none;
+  border-right: none;
+}
+.gadget-title {
+  text-transform: uppercase;
+  letter-spacing: 0.5pt;
+  padding: 1em;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e8e8e8;
+}
+.gadget-contents {
+  background: #ffffff;
+}
+.gadget-contents p {
+  padding: 1em;
+  color: #555555;
+}
+#bataTweetlist .gadget-title {
+  display: none;
+}
+#bata_tweetlist {
+  max-height: 750px;
+}
+#stand_tweetlist {
+  height: 256px;
+  overflow: hidden;
+}
+#wordcloudcell .gadget-title {
+  display: none;
+}
+#myImage {
+  overflow: hidden;
+  -webkit-transition: position 1s;
+}
+#myImage .gadget-contents {
+  min-height: 250px;
+}
+#myImage .gadget-contents img {
+  height: 100%;
+  width: 100%;
+}
+.bg-container {
+  width: 100%;
+  z-index: -1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  -webkit-filter: blur(5px);
+}
+.bg {
+  width: 100%;
+}
