@@ -20,6 +20,7 @@ import tweetprocessor
 import rengine
 import logging
 import threading
+import str2timefloat
 from argparse import ArgumentParser, FileType
 from argparse import RawDescriptionHelpFormatter
 
@@ -101,6 +102,10 @@ USAGE
         parser.add_argument("-s", "--speed", type=int, default=100000,
                             metavar="N", help="set rule engine speed "
                             "[default: %(default)s]")
+        parser.add_argument("-b", "--begin", type=str2timefloat.timefloat, default='',
+                            metavar="yyyy-MM-dd[:HH[:mm[:ss]]]", help="set begin date and time [default: first tweet]")
+        parser.add_argument("-e", "--end", type=str2timefloat.timefloat, default='',
+                            metavar="yyyy-MM-dd[:HH[:mm[:ss]]]", help="set end date [default: last tweet]")
         parser.add_argument("infile", nargs="?", type=FileType("r"),
                             default=sys.stdin, help="file containing event "
                             "messages [default: %(default)s]")
@@ -113,6 +118,8 @@ USAGE
         with_offline_tweets = args.with_offline_tweets
         port = args.port
         speed = args.speed
+        begin_time = args.begin
+        end_time = args.end
         infile = args.infile
 
         if verbose > 0:
@@ -162,7 +169,9 @@ USAGE
         threadsync_event = tweetprocessor.EVENT
         if args.run:
             threadsync_event = None
-        result = rengine.start_rule_engine(speed = speed,
+        result = rengine.start_rule_engine(start_time = begin_time,
+                                  stop_time = end_time,
+                                  speed = speed,
                                   produce = produce_function,
                                   threadsync_event = threadsync_event)
         if result:
